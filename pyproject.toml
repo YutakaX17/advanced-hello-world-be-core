@@ -4,15 +4,14 @@ build-backend = "hatchling.build"
 
 [project]
 name = "advanced-hello-world-be-core"
-version = "0.2.0"
-description = "Reusable Django message API for Advanced Hello World"
+version = "0.3.0"
+description = "Reusable Django contracts and operational endpoints for Advanced Hello World"
 readme = "README.md"
 requires-python = ">=3.12"
 license = { text = "MIT" }
 authors = [{ name = "YutakaX17" }]
 dependencies = [
   "Django>=5.2,<5.3",
-  "djangorestframework>=3.16,<3.17",
 ]
 
 [project.optional-dependencies]
@@ -36,6 +35,9 @@ packages = ["src/advanced_hello_world_core"]
 DJANGO_SETTINGS_MODULE = "tests.settings"
 pythonpath = ["src", "."]
 addopts = "--strict-markers --cov=advanced_hello_world_core --cov-report=term-missing --cov-fail-under=90"
+
+[tool.coverage.run]
+omit = ["*/migrations/*"]
 
 [tool.ruff]
 line-length = 100
