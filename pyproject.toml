@@ -17,8 +17,6 @@ dependencies = [
 [project.optional-dependencies]
 dev = [
   "build>=1.2",
-  "django-stubs[compatible-mypy]>=5.2",
-  "djangorestframework-stubs[compatible-mypy]>=3.16",
   "mypy>=1.16",
   "pip-audit>=2.9",
   "pytest>=8.4",
@@ -48,8 +46,4 @@ select = ["E", "F", "I", "B", "UP", "DJ"]
 
 [tool.mypy]
 python_version = "3.12"
-plugins = ["mypy_django_plugin.main"]
 strict = true
-
-[tool.django-stubs]
-django_settings_module = "tests.settings"
