@@ -1,0 +1,53 @@
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "advanced-hello-world-be-core"
+version = "0.1.0"
+description = "Reusable Django message API for Advanced Hello World"
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "MIT" }
+authors = [{ name = "YutakaX17" }]
+dependencies = [
+  "Django>=5.2,<5.3",
+  "djangorestframework>=3.16,<3.17",
+]
+
+[project.optional-dependencies]
+dev = [
+  "build>=1.2",
+  "django-stubs[compatible-mypy]>=5.2",
+  "djangorestframework-stubs[compatible-mypy]>=3.16",
+  "mypy>=1.16",
+  "pip-audit>=2.9",
+  "pytest>=8.4",
+  "pytest-cov>=6.2",
+  "pytest-django>=4.11",
+  "ruff>=0.12",
+  "twine>=6.1",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/advanced_hello_world_core"]
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "tests.settings"
+pythonpath = ["src", "."]
+addopts = "--strict-markers --cov=advanced_hello_world_core --cov-report=term-missing --cov-fail-under=90"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "DJ"]
+
+[tool.mypy]
+python_version = "3.12"
+plugins = ["mypy_django_plugin.main"]
+strict = true
+
+[tool.django-stubs]
+django_settings_module = "tests.settings"
