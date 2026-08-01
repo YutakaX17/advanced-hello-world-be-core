@@ -11,7 +11,7 @@ requires-python = ">=3.12"
 license = { text = "MIT" }
 authors = [{ name = "YutakaX17" }]
 dependencies = [
-  "Django>=5.2,<5.3",
+  "Django>=5.2,<6.1",
 ]
 
 [project.optional-dependencies]
