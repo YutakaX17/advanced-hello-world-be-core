@@ -1,18 +1,22 @@
 # Advanced Hello World Backend Core
 
-Reusable Django application containing the message model, database migration,
-serializer, REST endpoints, validation, and health checks. It deliberately
-contains no Django project, deployment settings, or web server; those belong to
-the [backend assembler](https://github.com/YutakaX17/advanced-hello-world-be).
+Reusable Django package containing shared module contracts and operational
+health endpoints. Feature models and APIs live in independently versioned
+modules. The package deliberately contains no Django project, deployment
+settings, or web server; those belong to the
+[backend assembler](https://github.com/YutakaX17/advanced-hello-world-be).
 
 ## What it provides
 
-- `Message` persistence and migration
-- `GET` and `POST /api/v1/messages`
 - `/api/v1/health/live` and `/api/v1/health/ready`
-- whitespace validation and newest-first message listing
 - a reusable Django app named `advanced_hello_world_core`
 - a validated `BackendModule` contract for independently installed features
+- inline type information for strict checking by downstream packages
+- historical migrations that preserve databases created before feature
+  extraction
+
+Message persistence and `/api/v1/messages` are provided by
+[the messages module](https://github.com/YutakaX17/advanced-hello-world-be-messages).
 
 ## Requirements
 
@@ -44,9 +48,11 @@ twine check dist/*
 pip-audit
 ```
 
-The test suite supplies a minimal Django project and uses an in-memory SQLite
-database. Application development against PostgreSQL is performed through the
-backend assembler.
+This `.venv` is an optional, disposable contributor environment for testing the
+core package alone. It is not the assembled application's runtime. The test
+suite supplies a minimal Django project and uses an in-memory SQLite database.
+Application development and integration against PostgreSQL use the backend
+assembler's `.venv`.
 
 ## Use from a sibling backend checkout
 
@@ -58,7 +64,8 @@ workspace/
 └── advanced-hello-world-be/
 ```
 
-Then install the core into the assembler's environment:
+The backend manifest installer will manage this automatically. For direct
+package development, install the core into the assembler's environment:
 
 ```bash
 cd advanced-hello-world-be
@@ -86,6 +93,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md), [SECURITY.md](SECURITY.md), and the
 ## Repository family
 
 - [Backend assembler](https://github.com/YutakaX17/advanced-hello-world-be)
+- [Backend messages module](https://github.com/YutakaX17/advanced-hello-world-be-messages)
 - [Frontend core](https://github.com/YutakaX17/advanced-hello-world-fe-core)
 - [Frontend assembler](https://github.com/YutakaX17/advanced-hello-world-fe)
 - [All-in-one distribution](https://github.com/YutakaX17/advanced-hello-world)
