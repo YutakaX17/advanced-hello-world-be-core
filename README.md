@@ -12,6 +12,7 @@ the [backend assembler](https://github.com/YutakaX17/advanced-hello-world-be).
 - `/api/v1/health/live` and `/api/v1/health/ready`
 - whitespace validation and newest-first message listing
 - a reusable Django app named `advanced_hello_world_core`
+- a validated `BackendModule` contract for independently installed features
 
 ## Requirements
 
